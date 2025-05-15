@@ -1,0 +1,158 @@
+{
+    "version": "0.1.0",
+    "name": "core_contract",
+    "instructions": [
+      {
+        "name": "initializeGameAccount",
+        "accounts": [
+          {
+            "name": "gameAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "player",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ]
+      },
+      {
+        "name": "deposit",
+        "accounts": [
+          {
+            "name": "gameAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "player",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "userInputTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "coreInputTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "coreSolAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "isNativeSol",
+            "type": "bool"
+          }
+        ]
+      },
+      {
+        "name": "executeResult",
+        "accounts": [
+          {
+            "name": "gameAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "userOutputTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "dexOutputTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "treasuryOutputTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "dexLpTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "dexAuthority",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "treasuryAuthority",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ]
+      }
+    ],
+    "accounts": [
+      {
+        "name": "gameAccount",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "player",
+              "type": "publicKey"
+            },
+            {
+              "name": "depositAmount",
+              "type": "u64"
+            },
+            {
+              "name": "frontendResult",
+              "type": "u64"
+            },
+            {
+              "name": "backendResult",
+              "type": "u64"
+            }
+          ]
+        }
+      }
+    ],
+    "errors": [
+      {
+        "code": 6000,
+        "name": "ResultMismatch",
+        "msg": "Frontend and backend results do not match"
+      }
+    ],
+    "metadata": {
+      "address": "AG1boShvVgvTwuhpUN1bVLUZB2MSDxdCBq1nfHXRTq63"
+    }
+  }
+  
